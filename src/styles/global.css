@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: Ubuntu;
+	src: url('../assets/fonts/Ubuntu-Bold.ttf');
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: Ubuntu;
+	src: url('../assets/fonts/Ubuntu-Medium.ttf');
+	font-weight: 500;
+}
+@font-face {
+	font-family: Ubuntu;
+	src: url('../assets/fonts/Ubuntu-Regular.ttf');
+	font-weight: 400;
+}
+
+.attribution {
+	@apply text-center text-[10px] bg-white w-full fixed bottom-0 left-1/2 -translate-x-1/2;
+}
+
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
