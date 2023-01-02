@@ -1,21 +1,10 @@
 <script lang="ts">
-	import ButtonGroup from './components/ButtonGroup.svelte';
-	import { navitems, form_fields } from './helpers';
+	import PersonalInfo from './components/PersonalInfo.svelte';
+	import { navitems } from './helpers';
 
-	export let data = { stage: '1' };
-	let errors: any;
-	form_fields.forEach(e => (errors = { ...errors, [e.id]: false }));
-
-	const handle_submit = (
-		e: Event & {
-			currentTarget: EventTarget & HTMLFormElement;
-		}
-	) => {
-		const form_data = new FormData(e.target as HTMLFormElement);
-		form_fields.forEach(
-			e => (errors = { ...errors, [e.id]: !form_data.get(e.id) })
-		);
-	};
+	$: stage = '1';
+	const next = () => (stage = (+stage + 1).toString());
+	const back = () => (stage = (+stage - 1).toString());
 </script>
 
 <div
@@ -36,7 +25,7 @@
 					<li class="md:flex md:gap-3 md:items-center">
 						<span
 							class={`${
-								navitem.id === data.stage
+								navitem.id === stage
 									? 'text-blue-300 bg-blue-50'
 									: 'text-white border'
 							} font-semibold text-sm w-9 h-9 flex items-center justify-center rounded-full md:w-10 md:h-10`}
@@ -59,41 +48,9 @@
 		<div
 			class="relative z-10 md:col-span-2 w-full rounded-lg bg-white px-5 py-8 mt-[25%] md:mt-0 md:h-full md:bg-[transparent] md:pl-10 md:pr-12"
 		>
-			<h1 class="font-bold text-2xl text-blue-300 mb-2">Personal Info</h1>
-			<p class="text-gray-100 tracking-wide mb-7">
-				Please provide your name, email address and phone number.
-			</p>
-
-			<form class="space-y-5" on:submit|preventDefault={handle_submit}>
-				{#each form_fields as field}
-					<div class="space-y-1 text-sm text-blue-300">
-						<div class="flex items-center justify-between">
-							<label for={field.id} class="block">{field.label}</label>
-							{#if errors?.[field.id]}
-								<span class="text-red text-xs font-medium"
-									>This field is required</span
-								>
-							{/if}
-						</div>
-						<input
-							type={field.type}
-							placeholder={field.placeholder}
-							id={field.id}
-							name={field.id}
-							class={`border rounded border-gray-50 w-full p-3  ${
-								errors?.[field.id] ? 'outline-red' : ''
-							}`}
-							autocomplete="0"
-							on:input={e =>
-								e.currentTarget.value
-									? (errors = { ...errors, [field.id]: false })
-									: (errors = { ...errors, [field.id]: true })}
-						/>
-					</div>
-				{/each}
-
-				<ButtonGroup />
-			</form>
+			{#if stage === '1'}
+				<PersonalInfo {stage} {next} {back} />
+			{/if}
 		</div>
 	</div>
 </div>
