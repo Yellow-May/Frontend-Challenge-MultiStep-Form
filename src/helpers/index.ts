@@ -1,3 +1,7 @@
+import icon_arcade from '../assets/images/icon-arcade.svg';
+import icon_advanced from '../assets/images/icon-advanced.svg';
+import icon_pro from '../assets/images/icon-pro.svg';
+
 export const navitems = [
 	{ id: '1', label: 'Your Info' },
 	{ id: '2', label: 'Select Plan' },
@@ -48,4 +52,10 @@ export const alphabets = [
 	'x',
 	'y',
 	'z',
+];
+
+export const options_list = [
+	{ id: '0', label: 'Arcade', sub: '$9/mo', icon: icon_arcade },
+	{ id: '1', label: 'Advance', sub: '$12/mo', icon: icon_advanced },
+	{ id: '2', label: 'Pro', sub: '$15/mo', icon: icon_pro },
 ];
