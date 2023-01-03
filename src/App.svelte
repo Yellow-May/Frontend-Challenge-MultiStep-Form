@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PersonalInfo from './components/PersonalInfo.svelte';
+	import SelectPlan from './components/SelectPlan.svelte';
 	import { navitems } from './helpers';
 
 	$: stage = '1';
@@ -50,6 +51,9 @@
 		>
 			{#if stage === '1'}
 				<PersonalInfo {stage} {next} {back} />
+			{/if}
+			{#if stage === '2'}
+				<SelectPlan {stage} {next} {back} />
 			{/if}
 		</div>
 	</div>
