@@ -13,7 +13,7 @@
 >
 	<!-- card -->
 	<div
-		class="w-full h-full p-2 rounded-md shadow bg-magnolia md:max-w-[95%] md:max-h-[90%] md:w-[878px] md:h-[568px] md:grid md:grid-cols-3 md:gap-8 md:p-3 md:bg-white md:shadow-lg"
+		class="p-2 rounded-md shadow bg-magnolia md:max-w-[95%] md:max-h-[90%] md:w-[878px] md:min-h-[568px] md:grid md:grid-cols-3 md:gap-8 md:p-3 md:bg-white md:shadow-lg"
 	>
 		<!-- left -->
 		<div

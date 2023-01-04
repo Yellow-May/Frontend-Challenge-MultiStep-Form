@@ -20,9 +20,13 @@
 </script>
 
 <Wrapper {title} {desc} {back} {stage} {handle_submit}>
-	<div class="flex flex-col gap-3">
+	<div class="flex flex-col gap-3 md:grid md:grid-cols-3 md:gap-5">
 		{#each options_list as option}
-			<div class="relative">
+			<div
+				class={`relative border border-gray-50 rounded-lg hover:border-gray-100 ${
+					selected === option.id ? 'border-gray-100 bg-magnolia' : ''
+				}`}
+			>
 				<input
 					type="radio"
 					name="plan"
@@ -31,11 +35,7 @@
 					bind:group={selected}
 					class="absolute w-full h-full opacity-0 cursor-pointer"
 				/>
-				<div
-					class={`p-4 border border-gray-100 rounded-lg flex items-start gap-5 w-full ${
-						selected === option.id ? 'border-blue-200 bg-magnolia' : ''
-					}`}
-				>
+				<div class="p-4 flex items-start gap-5 w-full md:flex-col md:gap-10">
 					<img src={option.icon} alt={option.label} class="w-11 h-11" />
 
 					<div class="flex flex-col items-start">
@@ -43,7 +43,7 @@
 							{option.label}
 						</h3>
 						<span class="text-sm text-gray-100">{option.sub}</span>
-						{#if monthly}
+						{#if !monthly}
 							<span class="text-sm text-blue-200">2 months free</span>
 						{/if}
 					</div>

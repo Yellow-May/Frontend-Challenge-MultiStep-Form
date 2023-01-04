@@ -11,7 +11,7 @@
 	{#if +stage > 1}
 		<button
 			title="Go Back"
-			class="text-gray-100 p-2 text-sm"
+			class="text-gray-100 p-2 text-sm hover:font-bold hover:text-blue-300"
 			type="button"
 			on:click={back}>Go Back</button
 		>
