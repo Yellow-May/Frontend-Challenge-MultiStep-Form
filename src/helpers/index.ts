@@ -54,8 +54,21 @@ export const alphabets = [
 	'z',
 ];
 
-export const options_list = [
-	{ id: '0', label: 'Arcade', sub: '$9/mo', icon: icon_arcade },
-	{ id: '1', label: 'Advance', sub: '$12/mo', icon: icon_advanced },
-	{ id: '2', label: 'Pro', sub: '$15/mo', icon: icon_pro },
-];
+export const options_list = new Map([
+	[
+		'plan',
+		[
+			{ id: '0', label: 'Arcade', sub: '$9/mo', icon: icon_arcade },
+			{ id: '1', label: 'Advance', sub: '$12/mo', icon: icon_advanced },
+			{ id: '2', label: 'Pro', sub: '$15/mo', icon: icon_pro },
+		],
+	],
+	[
+		'add-ons',
+		[
+			{ id: '0', label: 'Arcade', sub: '$9/mo', icon: icon_arcade },
+			{ id: '1', label: 'Advance', sub: '$12/mo', icon: icon_advanced },
+			{ id: '2', label: 'Pro', sub: '$15/mo', icon: icon_pro },
+		],
+	],
+]);

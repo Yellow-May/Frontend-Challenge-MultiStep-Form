@@ -5,7 +5,7 @@
 
 	const title = 'Select your plan';
 	const desc = 'You have the option of monthly or yearly billing.';
-	let selected: string | null = null;
+	let plan: string | null = null;
 	let monthly = true;
 
 	export let back: any;
@@ -15,16 +15,16 @@
 	const toggle_switch = () => (monthly = !monthly);
 
 	const handle_submit = () => {
-		if (selected) next();
+		if (plan) next();
 	};
 </script>
 
 <Wrapper {title} {desc} {back} {stage} {handle_submit}>
 	<div class="flex flex-col gap-3 md:grid md:grid-cols-3 md:gap-5">
-		{#each options_list as option}
+		{#each options_list.get('plan') as option}
 			<div
 				class={`relative border border-gray-50 rounded-lg hover:border-gray-100 ${
-					selected === option.id ? 'border-gray-100 bg-magnolia' : ''
+					plan === option.id ? 'border-gray-100 bg-magnolia' : ''
 				}`}
 			>
 				<input
@@ -32,7 +32,7 @@
 					name="plan"
 					id={option.id}
 					value={option.id}
-					bind:group={selected}
+					bind:group={plan}
 					class="absolute w-full h-full opacity-0 cursor-pointer"
 				/>
 				<div class="p-4 flex items-start gap-5 w-full md:flex-col md:gap-10">

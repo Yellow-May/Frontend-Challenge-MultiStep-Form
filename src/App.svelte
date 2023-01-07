@@ -1,9 +1,10 @@
 <script lang="ts">
+	import AddOns from './components/AddOns.svelte';
 	import PersonalInfo from './components/PersonalInfo.svelte';
 	import SelectPlan from './components/SelectPlan.svelte';
 	import { navitems } from './helpers';
 
-	$: stage = '2';
+	$: stage = '3';
 	const next = () => (stage = (+stage + 1).toString());
 	const back = () => (stage = (+stage - 1).toString());
 </script>
@@ -13,7 +14,7 @@
 >
 	<!-- card -->
 	<div
-		class="p-2 rounded-md shadow bg-magnolia md:max-w-[95%] md:max-h-[90%] md:w-[878px] md:min-h-[568px] md:grid md:grid-cols-3 md:gap-8 md:p-3 md:bg-white md:shadow-lg"
+		class="p-2 rounded-md bg-magnolia md:max-w-[95%] md:max-h-[90%] md:w-[878px] md:min-h-[568px] md:grid md:grid-cols-3 md:gap-8 md:p-3 md:bg-white md:shadow-lg"
 	>
 		<!-- left -->
 		<div
@@ -54,6 +55,9 @@
 			{/if}
 			{#if stage === '2'}
 				<SelectPlan {stage} {next} {back} />
+			{/if}
+			{#if stage === '3'}
+				<AddOns {stage} {next} {back} />
 			{/if}
 		</div>
 	</div>
