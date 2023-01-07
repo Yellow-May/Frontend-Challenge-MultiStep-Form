@@ -8,6 +8,13 @@
 	let plan: string | null = null;
 	let monthly = true;
 
+	const options = options_list.get('plans') as {
+		id: string;
+		label: string;
+		sub: string;
+		icon: string;
+	}[];
+
 	export let back: any;
 	export let next: any;
 	export let stage: string;
@@ -21,7 +28,7 @@
 
 <Wrapper {title} {desc} {back} {stage} {handle_submit}>
 	<div class="flex flex-col gap-3 md:grid md:grid-cols-3 md:gap-5">
-		{#each options_list.get('plan') as option}
+		{#each options as option}
 			<div
 				class={`relative border border-gray-50 rounded-lg hover:border-gray-100 ${
 					plan === option.id ? 'border-gray-100 bg-magnolia' : ''

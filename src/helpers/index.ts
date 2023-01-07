@@ -56,7 +56,7 @@ export const alphabets = [
 
 export const options_list = new Map([
 	[
-		'plan',
+		'plans',
 		[
 			{ id: '0', label: 'Arcade', sub: '$9/mo', icon: icon_arcade },
 			{ id: '1', label: 'Advance', sub: '$12/mo', icon: icon_advanced },
