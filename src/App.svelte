@@ -1,12 +1,20 @@
 <script lang="ts">
 	import AddOns from './components/AddOns.svelte';
+	import FinishingUp from './components/FinishingUp.svelte';
 	import PersonalInfo from './components/PersonalInfo.svelte';
 	import SelectPlan from './components/SelectPlan.svelte';
 	import { navitems } from './helpers';
 
-	$: stage = '3';
-	const next = () => (stage = (+stage + 1).toString());
-	const back = () => (stage = (+stage - 1).toString());
+	const curr_stage = localStorage.getItem('curr_stage');
+	$: stage = curr_stage ?? '1';
+	const next = () => {
+		stage = (+stage + 1).toString();
+		localStorage.setItem('curr_stage', stage);
+	};
+	const back = () => {
+		stage = (+stage - 1).toString();
+		localStorage.setItem('curr_stage', stage);
+	};
 </script>
 
 <div
@@ -58,6 +66,9 @@
 			{/if}
 			{#if stage === '3'}
 				<AddOns {stage} {next} {back} />
+			{/if}
+			{#if stage === '4'}
+				<FinishingUp {stage} {next} {back} />
 			{/if}
 		</div>
 	</div>

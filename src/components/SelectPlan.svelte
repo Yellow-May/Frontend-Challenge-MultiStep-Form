@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Wrapper from './layouts/Wrapper.svelte';
 	import Switch from './UI/Switch.svelte';
-	import { options_list } from '../helpers';
+	import { get_form_data, options_list, save_form_data } from '../helpers';
 
 	const title = 'Select your plan';
 	const desc = 'You have the option of monthly or yearly billing.';
-	let plan: string | null = null;
+	let plan: string | null = get_form_data()?.['plan'] ?? null;
 	let monthly = true;
 
 	const options = options_list.get('plans') as {
@@ -20,6 +20,15 @@
 	export let stage: string;
 
 	const toggle_switch = () => (monthly = !monthly);
+
+	const handle_change = (
+		e: Event & {
+			currentTarget: EventTarget & HTMLInputElement;
+		}
+	) => {
+		plan = e.currentTarget.id;
+		save_form_data({ plan });
+	};
 
 	const handle_submit = () => {
 		if (plan) next();
@@ -38,8 +47,8 @@
 					type="radio"
 					name="plan"
 					id={option.id}
-					value={option.id}
-					bind:group={plan}
+					checked={option.id === plan}
+					on:change={handle_change}
 					class="absolute w-full h-full opacity-0 cursor-pointer"
 				/>
 				<div class="p-4 flex items-start gap-5 w-full md:flex-col md:gap-10">

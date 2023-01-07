@@ -87,3 +87,19 @@ export const options_list = new Map([
 		],
 	],
 ]);
+
+export const get_form_data = () => {
+	const form_data = localStorage.getItem('form_data');
+	if (form_data) return JSON.parse(form_data);
+	return {};
+};
+
+export const save_form_data = (changes: any) => {
+	let new_data = {};
+	const form_data = localStorage.getItem('form_data');
+
+	if (form_data) new_data = { ...JSON.parse(form_data), ...changes };
+	else new_data = { ...changes };
+
+	localStorage.setItem('form_data', JSON.stringify(new_data));
+};

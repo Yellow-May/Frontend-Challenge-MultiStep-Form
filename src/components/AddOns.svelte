@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Wrapper from './layouts/Wrapper.svelte';
-	import { options_list } from '../helpers';
+	import { get_form_data, options_list, save_form_data } from '../helpers';
 	import icon_checkmark from '../assets/images/icon-checkmark.svg';
 
 	let title = 'Pick add-ons';
 	let desc = 'Add-ons help enhance your gaming experience.';
-	let add_ons: string[] = [];
+	let add_ons: string[] = get_form_data()?.['add_ons'] ?? [];
 
 	const options = options_list.get('add-ons') as {
 		id: string;
@@ -17,6 +17,18 @@
 	export let back: any;
 	export let next: any;
 	export let stage: string;
+
+	const handle_change = (
+		e: Event & {
+			currentTarget: EventTarget & HTMLInputElement;
+		}
+	) => {
+		const { id } = e.currentTarget;
+		add_ons = add_ons.includes(id)
+			? add_ons.filter(e => e !== id)
+			: [...add_ons, id];
+		save_form_data({ add_ons });
+	};
 
 	const handle_submit = () => {
 		next();
@@ -39,8 +51,8 @@
 					type="checkbox"
 					name="plan"
 					id={option.id}
-					value={option.id}
-					bind:group={add_ons}
+					checked={add_ons.includes(option.id)}
+					on:change={handle_change}
 					class={`w-4 h-4 ${add_ons.includes(option.id) ? 'hidden' : ''}`}
 				/>
 
