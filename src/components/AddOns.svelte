@@ -19,7 +19,7 @@
 	export let stage: string;
 
 	const handle_submit = () => {
-		if (add_ons) next();
+		next();
 	};
 </script>
 
