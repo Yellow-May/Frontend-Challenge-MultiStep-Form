@@ -48,7 +48,7 @@
 
 		<!-- right -->
 		<div
-			class="relative z-10 md:col-span-2 w-full rounded-lg bg-white px-5 pt-8 pb-[30%] mt-[25%] sm:pb-[10%] md:mt-0 md:h-full md:bg-[transparent] md:pl-10 md:pr-12"
+			class="relative z-10 md:col-span-2 w-full rounded-lg bg-white px-5 pt-8 pb-[10%] mt-[25%] md:mt-0 md:h-full md:bg-[transparent] md:pl-10 md:pr-12 small-screen:mb-[30%]"
 		>
 			{#if stage === '1'}
 				<PersonalInfo {stage} {next} {back} />

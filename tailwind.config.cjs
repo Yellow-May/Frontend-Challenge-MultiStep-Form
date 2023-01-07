@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
+	extends: {
+		screens: {
+			'small-screen': { raw: '(max-height: 758px), (max-width: 480px)' },
+		},
+	},
 	theme: {
 		colors: {
 			blue: {

@@ -66,9 +66,24 @@ export const options_list = new Map([
 	[
 		'add-ons',
 		[
-			{ id: '0', label: 'Arcade', sub: '$9/mo', icon: icon_arcade },
-			{ id: '1', label: 'Advance', sub: '$12/mo', icon: icon_advanced },
-			{ id: '2', label: 'Pro', sub: '$15/mo', icon: icon_pro },
+			{
+				id: '0',
+				label: 'Online service',
+				sub: 'Access to multiplayer games',
+				cost: '$1/mo',
+			},
+			{
+				id: '1',
+				label: 'Larger storage',
+				sub: 'Extra 1TB of cloud save',
+				cost: '$2/mo',
+			},
+			{
+				id: '2',
+				label: 'Customizable profile',
+				sub: 'Custom theme on your profile',
+				cost: '$2/mo',
+			},
 		],
 	],
 ]);
