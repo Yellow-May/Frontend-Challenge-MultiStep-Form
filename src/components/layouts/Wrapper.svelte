@@ -6,6 +6,7 @@
 	export let handle_submit: any;
 	export let stage: string;
 	export let back: any;
+	export let okText: string | undefined = undefined;
 </script>
 
 <h1 class="font-bold text-2xl text-blue-300 mb-2">{title}</h1>
@@ -16,5 +17,5 @@
 <form on:submit|preventDefault={handle_submit}>
 	<slot />
 
-	<ButtonGroup {stage} {back} />
+	<ButtonGroup {stage} {back} {okText} />
 </form>

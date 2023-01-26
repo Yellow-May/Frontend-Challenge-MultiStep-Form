@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let stage: string;
 	export let back: any | null = null;
+	export let okText: string = 'Next Step';
 </script>
 
 <div
@@ -17,8 +18,10 @@
 		>
 	{/if}
 	<button
-		title="Next Step"
-		class="bg-blue-300 text-blue-50 px-4 py-2 rounded-md text-sm"
-		type="submit">Next Step</button
+		title={okText}
+		class={`text-blue-50 px-4 py-2 rounded-md text-sm ${
+			okText === 'Next Step' ? 'bg-blue-300' : 'bg-blue-200'
+		}`}
+		type="submit">{okText}</button
 	>
 </div>

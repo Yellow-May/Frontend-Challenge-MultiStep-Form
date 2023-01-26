@@ -6,7 +6,7 @@
 	const title = 'Select your plan';
 	const desc = 'You have the option of monthly or yearly billing.';
 	let plan: string | null = get_form_data()?.['plan'] ?? null;
-	let monthly = true;
+	let monthly = get_form_data()?.['monthly'] ?? true;
 
 	const options = options_list.get('plans') as {
 		id: string;
@@ -19,7 +19,10 @@
 	export let next: any;
 	export let stage: string;
 
-	const toggle_switch = () => (monthly = !monthly);
+	const toggle_switch = () => {
+		monthly = !monthly;
+		save_form_data({ monthly });
+	};
 
 	const handle_change = (
 		e: Event & {

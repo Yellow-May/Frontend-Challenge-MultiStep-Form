@@ -1,8 +1,8 @@
 <script lang="ts">
 	import AddOns from './components/AddOns.svelte';
-	import FinishingUp from './components/FinishingUp.svelte';
 	import PersonalInfo from './components/PersonalInfo.svelte';
 	import SelectPlan from './components/SelectPlan.svelte';
+	import Summary from './components/Summary.svelte';
 	import { navitems } from './helpers';
 
 	const curr_stage = localStorage.getItem('curr_stage');
@@ -68,7 +68,7 @@
 				<AddOns {stage} {next} {back} />
 			{/if}
 			{#if stage === '4'}
-				<FinishingUp {stage} {next} {back} />
+				<Summary {stage} {next} {back} />
 			{/if}
 		</div>
 	</div>
