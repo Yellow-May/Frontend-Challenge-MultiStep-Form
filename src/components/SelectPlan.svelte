@@ -11,7 +11,7 @@
 	const options = options_list.get('plans') as {
 		id: string;
 		label: string;
-		sub: string;
+		cost: { monthly: number; yearly: number };
 		icon: string;
 	}[];
 
@@ -61,7 +61,11 @@
 						<h3 class="text-lg font-medium text-blue-300">
 							{option.label}
 						</h3>
-						<span class="text-sm text-gray-100">{option.sub}</span>
+						<span class="text-sm text-gray-100"
+							>${monthly
+								? `${option.cost.monthly}/mo`
+								: `${option.cost.yearly}/yr`}</span
+						>
 						{#if !monthly}
 							<span class="text-sm text-blue-200">2 months free</span>
 						{/if}

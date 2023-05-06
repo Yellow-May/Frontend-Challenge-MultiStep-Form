@@ -4,8 +4,8 @@
 
 	let title = 'Personal Info';
 	let desc = 'Please provide your name, email address and phone number.';
-	let data = {};
-	$: errors = {};
+	let data = {} as any;
+	$: errors = {} as any;
 
 	const curr_form_data = get_form_data();
 	form_fields.forEach(e => {

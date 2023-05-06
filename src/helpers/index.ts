@@ -58,9 +58,24 @@ export const options_list = new Map([
 	[
 		'plans',
 		[
-			{ id: '0', label: 'Arcade', sub: '$9/mo', icon: icon_arcade },
-			{ id: '1', label: 'Advance', sub: '$12/mo', icon: icon_advanced },
-			{ id: '2', label: 'Pro', sub: '$15/mo', icon: icon_pro },
+			{
+				id: '0',
+				label: 'Arcade',
+				cost: { monthly: 9, yearly: 90 },
+				icon: icon_arcade,
+			},
+			{
+				id: '1',
+				label: 'Advance',
+				cost: { monthly: 12, yearly: 120 },
+				icon: icon_advanced,
+			},
+			{
+				id: '2',
+				label: 'Pro',
+				cost: { monthly: 15, yearly: 150 },
+				icon: icon_pro,
+			},
 		],
 	],
 	[
@@ -70,19 +85,19 @@ export const options_list = new Map([
 				id: '0',
 				label: 'Online service',
 				sub: 'Access to multiplayer games',
-				cost: '$1/mo',
+				cost: { monthly: 1, yearly: 10 },
 			},
 			{
 				id: '1',
 				label: 'Larger storage',
 				sub: 'Extra 1TB of cloud save',
-				cost: '$2/mo',
+				cost: { monthly: 2, yearly: 20 },
 			},
 			{
 				id: '2',
 				label: 'Customizable profile',
 				sub: 'Custom theme on your profile',
-				cost: '$2/mo',
+				cost: { monthly: 2, yearly: 20 },
 			},
 		],
 	],
@@ -102,4 +117,8 @@ export const save_form_data = (changes: any) => {
 	else new_data = { ...changes };
 
 	localStorage.setItem('form_data', JSON.stringify(new_data));
+};
+
+export const reset_form_data = () => {
+	localStorage.removeItem('form_data');
 };

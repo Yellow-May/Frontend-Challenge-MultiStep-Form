@@ -3,7 +3,8 @@
 	import PersonalInfo from './components/PersonalInfo.svelte';
 	import SelectPlan from './components/SelectPlan.svelte';
 	import Summary from './components/Summary.svelte';
-	import { navitems } from './helpers';
+	import ThankYou from './components/ThankYou.svelte';
+	import { navitems, reset_form_data } from './helpers';
 
 	const curr_stage = localStorage.getItem('curr_stage');
 	$: stage = curr_stage ?? '1';
@@ -11,9 +12,17 @@
 		stage = (+stage + 1).toString();
 		localStorage.setItem('curr_stage', stage);
 	};
-	const back = () => {
+	const back = (payload?: string) => {
+		if (payload && typeof payload === 'string') {
+			stage = payload;
+			localStorage.setItem('curr_stage', payload);
+		}
 		stage = (+stage - 1).toString();
 		localStorage.setItem('curr_stage', stage);
+	};
+	const reset = () => {
+		stage = '1';
+		reset_form_data();
 	};
 </script>
 
@@ -69,6 +78,9 @@
 			{/if}
 			{#if stage === '4'}
 				<Summary {stage} {next} {back} />
+			{/if}
+			{#if stage === '5'}
+				<ThankYou {reset} />
 			{/if}
 		</div>
 	</div>

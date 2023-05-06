@@ -19,7 +19,7 @@
 	{/if}
 	<button
 		title={okText}
-		class={`text-blue-50 px-4 py-2 rounded-md text-sm ${
+		class={`text-white px-4 py-2 rounded text-sm ${
 			okText === 'Next Step' ? 'bg-blue-300' : 'bg-blue-200'
 		}`}
 		type="submit">{okText}</button

@@ -7,11 +7,12 @@
 	let desc = 'Add-ons help enhance your gaming experience.';
 	let add_ons: string[] = get_form_data()?.['add_ons'] ?? [];
 
+	const monthly = get_form_data()?.['monthly'];
 	const options = options_list.get('add-ons') as {
 		id: string;
 		label: string;
 		sub: string;
-		cost: string;
+		cost: { monthly: number; yearly: number };
 	}[];
 
 	export let back: any;
@@ -63,7 +64,11 @@
 					<span class="text-[13px] text-gray-100">{option.sub}</span>
 				</div>
 
-				<span class="text-xs text-blue-200">{option?.cost}</span>
+				<span class="text-xs text-blue-200"
+					>${monthly
+						? `${option.cost.monthly}/mo`
+						: `${option.cost.yearly}/yr`}</span
+				>
 			</label>
 		{/each}
 	</div>
